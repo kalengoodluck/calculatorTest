@@ -31,37 +31,37 @@
 
             <p>This is a loose estimate and is designed to show a loose impact rather than an exact change.</p>
             <table>
-                <tr> <!-- A ROW + THEIR HEADER TITLES -->
+                <tr>
                     <th>Item</th>
                     <th>Qty</th>
                     <th>Cost</th>
                     <th>Total before tariff</th>
                     <th>Total after tariff</th>
                 </tr>
-                <tr class="item" data-tariff-percent="0"> <!--ROW CLASS LABOR with a varaible, "O"-->
+                <tr class="item" data-tariff-percent="0">
                     <td>Labor</td>
-                    <td><input type="number" class="qty" placeholder="Workers"/></td> <!--GIVING CELLS A CLASS QTY, where the input value is a number, and the placeholder (visible) text is "workers". this is the first input the jquery is referencing -->
-                    <td><input type="number" class="cost" placeholder="Wage"/></td>
+                    <td>
+                        <input class="qty" type="number" placeholder="Workers" />
+                    </td>
+                    <td><input class="cost" type="number" placeholder="Wage" /></td>
                     <td class="pre_total">$<span></span></td>
                     <td class="post_total">$<span></span></td>
                 </tr>
-                    <tr class="item" data-tariff-percent="0"> <!--STEEL -->
+                <tr class="item" data-tariff-percent="25">
                     <td>Steel materials</td>
-                    <td><input type="number" class="qty" /></td>
-                    <td><input type="number" class="cost"/></td>
+                    <td><input class="qty" type="number" /></td>
+                    <td><input class="cost" type="number" /></td>
                     <td class="pre_total">$<span></span></td>
                     <td class="post_total">$<span></span></td>
                 </tr>
-                <tr class="item" data-tariff-percent="10"> <!--ALUMNINIM -->
+                <tr class="item" data-tariff-percent="10">
                     <td>Aluminum materials</td>
-                    <td><input class="qty" /></td>
-                    <td><input type="number" class="cost"/></td>
+                    <td><input class="qty" type="number" /></td>
+                    <td><input class="cost" type="number" /></td>
                     <td class="pre_total">$<span></span></td>
                     <td class="post_total">$<span></span></td>
                 </tr>
             </table>
-
-            <button class="calculate">Compare</button>
 
             <div id="pre_total" class="total">
                 <h2>Cost before tariffs</h2>

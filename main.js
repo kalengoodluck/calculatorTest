@@ -1,23 +1,35 @@
-$(document).ready(function(){ // an anonymous function that tells the page to run and load first before loading all the functions //
+$(document).ready(function () {
+	$("input").on("keyup keydown keypress change", function (e) {
+		var this_input = $(this),
+			this_row = this_input.closest(".item"),
+			quantity = parseFloat(this_row.find(".qty").val()),
+			cost = parseFloat(this_row.find(".cost").val()),
+			tariff = parseFloat(this_row.data("tariff-percent")),
+			pre_tariff_cost = (cost * quantity),
+			post_tariff_cost = (pre_tariff_cost + (pre_tariff_cost * (tariff / 100)));
 
-// DOM == document object model --  put something in our JS that asks the DOM to listen for what the user inputs on our calcular and form//
+		// console.log("Quantity", quantity);
 
-$('.item').find('input').on('keyup keydown keypress change', function(){} // look for everything witht he class item, and find the first input. being typed on the input box //
+		this_row.find(".pre_total").find("span").text(pre_tariff_cost);
+		this_row.find(".post_total").find("span").text(post_tariff_cost);
 
-// variables = storage box of data //
+		var pre_total = 0,
+			post_total = 0;
 
-var input = $(this), // selecting the cell //
-	item = input.closest('.item'),
-	qty = parseFloat(item.find('.qty').val()), // return the decimal value in the the input, which the user puts, into anything with the class qty. //
-	cost = parseFloat (item.find('.cost').val()), // calling cost class //
-	tariff = parseFloat(item.data('tariff-percent')), // looking for data, calling it tariff percent //
-	total_before = parseFloat(qty * cost), // taking these two variables, multiply the quantity times the cost //
-	total_after = addTariff(total_before, tariff);
+		$(".pre_total").each(function () {
+			//do stuff
+			var this_pre_total = parseFloat($(this).find("span").text());
+			pre_total = pre_total + this_pre_total;
+		});
 
+		$(".post_total").each(function () {
+			//more stuff
+			var this_post_total = parseFloat($(this).find("span").text());
+			post_total = post_total + this_post_total;
+		});
 
+		$("#pre_total").find("span").text(pre_total);
+		$("#post_total").find("span").text(post_total);
+
+	});
 });
-
-
-function addTariff(total_before, tarff){
-	return total_before + (total_before*(tariff/100)) // add cost divided by 100 //
-}
